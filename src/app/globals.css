@@ -20,8 +20,8 @@ input[type="password"]:disabled,
 input[type="tel"]:disabled,
 input[type="text"]:disabled {
   @apply bg-gray-300 border-0 cursor-not-allowed text-gray-500;
-}
-label{
+} 
+  label{
   @apply text-gray-500 text-sm leading-tight;
 }
 label + input{
@@ -46,4 +46,4 @@ div.tabs > *.active{
 
 .flying-button-parent button{
   @apply border-primary bg-primary text-white rounded-full;
-}
+} 

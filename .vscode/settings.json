@@ -1,0 +1,10 @@
+{
+    "workbench.settings.editor": "ui",
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "workbench.settings.useSplitJSON": false
+
+    ,"files.associations": {
+        "*.css": "tailwindcss",
+        "*.scss": "tailwindcss",
+      },
+}
