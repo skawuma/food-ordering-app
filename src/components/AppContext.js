@@ -2,6 +2,8 @@
 'use client';
 import {createContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
+import { SessionProvider } from "next-auth/react";
+
 
 export const CartContext = createContext({});
 
@@ -60,13 +62,13 @@ export function AppProvider({children}) {
   }
 
   return (
-   // <SessionProvider>
+    <SessionProvider>
       <CartContext.Provider value={{
         cartProducts, setCartProducts,
         addToCart, removeCartProduct, clearCart,
       }}>
         {children}
       </CartContext.Provider>
-   // </SessionProvider>
+    </SessionProvider>
   );
 }

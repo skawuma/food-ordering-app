@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "mongodb": "^6.5.0",
@@ -20,6 +21,7 @@
     "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "20.11.30",
     "@types/react": "18.2.69",
     "autoprefixer": "^10.4.18",

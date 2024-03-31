@@ -17,20 +17,7 @@ export  async function POST(req) {
       console.log(error.message)
      });
 
-//    const  MONGO_URL="mongodb+srv://christokawuma:iY0txLCzjjyPRfHU@cluster0.tlkp0qb.mongodb.net/";
-// mongoose.connect(process.env.MONGO_URL);
 
-// await mongoose.connect(mongoDB);
-//  mongoose.connect('mongodb+srv://christokawuma:iY0txLCzjjyPRfHU@cluster0.tlkp0qb.mongodb.net/', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-// })
-// .then(() => {
-//     console.log('Connected to MongoDB');
-// })
-// .catch((error) => {
-//     console.error('Error connecting to MongoDB:', error);
-// });
     const createdUser = await User.create(body);
     return Response.json(createdUser);
 }
