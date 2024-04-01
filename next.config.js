@@ -1,39 +1,17 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {}
-
-// module.exports = nextConfig
-
-
-
-
-
-// const nextConfig = {
-//     reactStrictMode: true,
-//     swcMinify: true,
-  
-//     webpack: (config, { isServer }) => {
-//       if (!isServer) {
-//         config.resolve.fallback = {
-//           fs: false,
-//         };
-//       }
-  
-//       return config;
-//     },
-//   };
-  
-//   module.exports = nextConfig;
-  
-
-
-
-
-module.exports = async (phase, { defaultConfig }) => {
-    /**
-     * @type {import('next').NextConfig}
-     */
-    const nextConfig = {
-      /* config options here */
-    }
-    return nextConfig
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dawid-food-ordering.s3.amazonaws.com',
+      },
+    ]
   }
+}
+
+module.exports = nextConfig

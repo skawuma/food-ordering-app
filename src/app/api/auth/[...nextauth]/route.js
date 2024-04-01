@@ -3,12 +3,21 @@ import NextAuth from "next-auth"
 import {User} from '@/app/models/User';
 import bcrypt from "bcrypt"
 import * as mongoose from "mongoose";
-
-
+import GoogleProvider from "next-auth/providers/google";
+import { MongoDBAdapter } from "@auth/mongodb-adapter"
+import clientPromise from '@/libs/mongoConnect'
+import { env } from "process";
+require('dotenv').config(env.NEXT_PUBLIC_PATH)
+//require('dotenv').config({path: '/Users/samuelkawuma/Library/Mobile Documents/com~apple~CloudDocs/food-ordering-app/src/.env' })
 const handler = NextAuth({
 
-  secret :process.env['NEXT_PUBLIC_SECRET']="tQNdHBmZB611JnHvyt76q2qRBYCQSv6b",
+  secret :process.env.NEXT_PUBLIC_SECRET,
+  adapter: MongoDBAdapter(clientPromise),
     providers: [
+      GoogleProvider({
+        clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+        clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
+      }),
         CredentialsProvider({
             name: 'Credentials',
             id: 'credentials',
@@ -21,7 +30,7 @@ const handler = NextAuth({
             const email = credentials?.email;
             const password = credentials?.password;
     
-            mongoose.connect(process.env['NEXT_PUBLIC_MONGODB_URI']="mongodb+srv://christokawuma:iY0txLCzjjyPRfHU@cluster0.tlkp0qb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+            mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI)
             .then(connection => {
                 console.log('Connected to MongoDB')
             })
