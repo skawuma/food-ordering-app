@@ -3,13 +3,13 @@ import mongoose from "mongoose";
 import { User } from "../../models/User";
 
 
-
+require('dotenv').config(env.NEXT_PUBLIC_PATH)
 export  async function POST(req) {
    
 
     const body = await req.json();
    // const myVal = process.env.NEXT_PUBLIC_MONGODB_URI
-    mongoose.connect(process.env['NEXT_PUBLIC_MONGODB_URI']="mongodb+srv://christokawuma:iY0txLCzjjyPRfHU@cluster0.tlkp0qb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+    mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI)
     .then(connection => {
         console.log('Connected to MongoDB')
     })
