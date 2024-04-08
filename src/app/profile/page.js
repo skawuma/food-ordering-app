@@ -13,10 +13,10 @@ import toast from "react-hot-toast";
 
 export default function ProfilePage() {
   const session = useSession();
-
-  const [user, setUser] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [profileFetched, setProfileFetched] = useState(false);
+// Remmber to set these back to null, false, false
+  const [user, setUser] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(true);
+  const [profileFetched, setProfileFetched] = useState(true);
   const {status} = session;
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export default function ProfilePage() {
       fetch('/api/profile').then(response => {
         response.json().then(data => {
           setUser(data);
+          console.log(data)
           setIsAdmin(data.admin);
           setProfileFetched(true);
         })

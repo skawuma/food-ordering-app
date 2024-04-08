@@ -1,15 +1,16 @@
-import CredentialsProvider from "next-auth/providers/credentials"
-import NextAuth from "next-auth"
+import clientPromise from "@/libs/mongoConnect";
+import CredentialsProvider from "next-auth/providers/credentials";
+ import { UserInfo } from "@/app/models/UserInfo";
+import NextAuth from "next-auth";
 import {User} from '@/app/models/User';
 import bcrypt from "bcrypt"
 import * as mongoose from "mongoose";
 import GoogleProvider from "next-auth/providers/google";
-import { MongoDBAdapter } from "@auth/mongodb-adapter"
-import clientPromise from '@/libs/mongoConnect'
-import { env } from "process";
-require('dotenv').config(env.NEXT_PUBLIC_PATH)
+import {MongoDBAdapter} from "@next-auth/mongodb-adapter"
+ import { env } from "process";
+ require('dotenv').config(env.NEXT_PUBLIC_PATH)
 //require('dotenv').config({path: '/Users/samuelkawuma/Library/Mobile Documents/com~apple~CloudDocs/food-ordering-app/src/.env' })
-const handler = NextAuth({
+export const authOptions ={
 
   secret :process.env.NEXT_PUBLIC_SECRET,
   adapter: MongoDBAdapter(clientPromise),
@@ -52,6 +53,20 @@ const handler = NextAuth({
           }
         })
       ],
-});
+};
 
+export async function isAdmin() {
+  const session = await getServerSession(authOptions);
+  const userEmail = session?.user?.email;
+  if (!userEmail) {
+    return false;
+  }
+  const userInfo = await UserInfo.findOne({email:userEmail});
+  if (!userInfo) {
+    return false;
+  }
+  return userInfo.admin;
+
+}
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST }

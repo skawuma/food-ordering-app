@@ -9,7 +9,8 @@ import {useContext, useState} from "react";
 import Bars2 from "@/components/icons/Bars2";
 
 function AuthLinks({status, userName}) {
-  if (status === 'authenticated') {
+    console.log(status);
+    if (status === 'authenticated' ) {
     return (
       <>
         <Link href={'/profile'} className="whitespace-nowrap">
@@ -37,6 +38,7 @@ function AuthLinks({status, userName}) {
 
 export default function Header() {
   const session = useSession();
+  console.log(session);
   const status = session?.status;
   const userData = session.data?.user;
   let userName = userData?.name || userData?.email;
