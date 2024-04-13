@@ -14,9 +14,9 @@ import toast from "react-hot-toast";
 export default function ProfilePage() {
   const session = useSession();
 // Remmber to set these back to null, false, false
-  const [user, setUser] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [profileFetched, setProfileFetched] = useState(true);
+  const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [profileFetched, setProfileFetched] = useState(false);
   const {status} = session;
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function ProfilePage() {
       if (response.ok)
         resolve()
       else
-        reject();
+        reject(new Error('Something went wrong'));
     });
 
     await toast.promise(savingPromise, {

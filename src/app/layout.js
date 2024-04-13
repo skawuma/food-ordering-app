@@ -17,8 +17,7 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <main className="max-w-4xl mx-auto p-4">
           <AppProvider> 
-            <Toaster />
-            
+            <Toaster /> 
             <Header />
             {children}
             <footer className="border-t p-8 text-center text-gray-500 mt-16">

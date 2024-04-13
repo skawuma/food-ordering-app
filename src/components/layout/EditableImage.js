@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import toast from "react-hot-toast";
 
@@ -16,15 +17,19 @@ export default function EditableImage({link, setLink}) {
         if (response.ok) {
           const link = await response.json();
             setLink(link);
+          
         }
-        throw new Error('Something went wrong');
+        else
+         throw new Error('Something went wrong');
       });
 
       await toast.promise(uploadPromise, {
         loading: 'Uploading...',
         success: 'Upload complete',
         error: 'Upload error',
+        
       });
+   
     }
   }
 

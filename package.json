@@ -16,10 +16,11 @@
     "dotenv": "^16.4.5",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.3",
-    "next": "^14.1.4",
+    "next": "^14.2.1",
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot": "^0.0.1",
     "react-hot-toast": "^2.4.1",
     "uniqid": "^5.4.0"
   },
