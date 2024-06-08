@@ -25,6 +25,7 @@ function AuthLinks({status, userName}) {
     );
   }
   if (status === 'unauthenticated') {
+    console.log(userName)
     return (
       <>
         <Link href={'/login'}>Login</Link>

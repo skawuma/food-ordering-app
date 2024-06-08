@@ -1,45 +1,25 @@
 'use client';
-import Left from "@/components/icons/Left";
+
 import Right from "@/components/icons/Right";
-import EditableImage from "@/components/layout/EditableImage";
-import MenuItemForm from "@/components/layout/MenuItemForm";
+import Image from "next/image";
 import UserTabs from "@/components/layout/UserTabs";
 import {useProfile} from "@/components/useProfile"
 import Link from "next/link";
-import {redirect} from "next/navigation";
-import { useState } from "react";
-import toast from "react-hot-toast";
 
-export default function NewMenuItemPage(){
-  const [redirectToItems, setRedirectToItems] = useState(false);
+import { useState ,useEffect} from "react";
+
+
+export default function MenuItemPage(){
+  const [menuItems, setMenuItems] = useState([]);
   const {loading, data} = useProfile();
 
-  async function handleFormSubmit(ev, data) {
-    ev.preventDefault();
-    const savingPromise = new Promise(async (resolve, reject) => {
-      const response = await fetch('/api/menu-items', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
+  useEffect(() => {
+    fetch('/api/menu-items').then(res => {
+      res.json().then(menuItems => {
+        setMenuItems(menuItems);
       });
-      if (response.ok)
-        resolve();
-      else
-        reject();
-    });
-
-    await toast.promise(savingPromise, {
-      loading: 'Saving this tasty item',
-      success: 'Saved',
-      error: 'Error',
-    });
-
-    setRedirectToItems(true);
-  }
-
-  if (redirectToItems) {
-    return redirect('/menu-items');
-  }
+    })
+  }, []);
 
   if (loading) {
     return 'Loading user info...';
@@ -50,15 +30,38 @@ export default function NewMenuItemPage(){
   }
 
   return (
-    <section className="mt-8">
+    <section className="mt-8 max-w-2xl mx-auto">
       <UserTabs isAdmin={true} />
-      <div className="max-w-2xl mx-auto mt-8">
-        <Link href={'/menu-items'} className="button">
-          <Left />
-          <span>Show all menu items</span>
+      <div className="mt-8">
+        <Link
+          className="button flex"
+          href={'/menu-items/new'}>
+          <span>Crete new menu item</span>
+          <Right />
         </Link>
       </div>
-      <MenuItemForm menuItem={null} onSubmit={handleFormSubmit} />
+      <div>
+        <h2 className="text-sm text-gray-500 mt-8">Edit menu item:</h2>
+        <div className="grid grid-cols-3 gap-2">
+          {menuItems?.length > 0 && menuItems.map(item => (
+            <Link
+              key={item._id}
+              href={'/menu-items/edit/'+item._id}
+              className="bg-gray-200 rounded-lg p-4"
+            >
+              <div className="relative">
+                <Image
+                  className="rounded-md"
+                  src={item.image} alt={''} width={200} height={200} />
+              </div>
+              <div className="text-center">
+                {item.name}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </section>
   );
+
 }
