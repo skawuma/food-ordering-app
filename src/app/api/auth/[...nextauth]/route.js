@@ -23,7 +23,7 @@ export const authOptions ={
             name: 'Credentials',
             id: 'credentials',
             credentials: {
-              username: { label: "Email", type: "email", placeholder: "test@example.com" },
+              username: { label: "Email", type: "email" },
               password: { label: "Password", type: "password" },
           },
           async authorize(credentials, req) {
@@ -39,17 +39,17 @@ export const authOptions ={
               console.log(error.message)
              });
             const user = await User.findOne({email});
-            const passwordOk =  user && bcrypt.compare(password,user.password);
+            const passwordOk =  user && bcrypt.compareSync(password,user.password);
             console.log(user.password);
             console.log(password);
             console.log({passwordOk});
-            // console.log({user});
+             console.log({user});
             // If no error and we have user data, return it
             if (passwordOk) {
               return user;
             }
             // Return null if user data could not be retrieved
-            return null
+            return null;
           }
         })
       ],

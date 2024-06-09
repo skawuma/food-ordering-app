@@ -9,7 +9,11 @@ import {useContext, useState} from "react";
 import Bars2 from "@/components/icons/Bars2";
 
 function AuthLinks({status, userName}) {
-    console.log(status);
+
+  console.log(status);
+
+  console.log(userName);
+   
     if (status === 'authenticated' ) {
     return (
       <>
@@ -23,7 +27,7 @@ function AuthLinks({status, userName}) {
         </button>
       </>
     );
-  }
+   }
   if (status === 'unauthenticated') {
     console.log(userName)
     return (
@@ -34,12 +38,12 @@ function AuthLinks({status, userName}) {
         </Link>
       </>
     );
-  }
+   }
 }
 
 export default function Header() {
   const session = useSession();
-  console.log(session);
+  
   const status = session?.status;
   const userData = session.data?.user;
   let userName = userData?.name || userData?.email;
@@ -47,8 +51,10 @@ export default function Header() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   if (userName && userName.includes(' ')) {
     userName = userName.split(' ')[0];
+
   }
   return (
+    
     <header>
       <div className="flex items-center md:hidden justify-between">
         <Link className="text-primary font-semibold text-2xl" href={'/'}>
