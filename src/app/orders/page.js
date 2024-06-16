@@ -1,5 +1,5 @@
 'use client';
-import SectionHeaders from "../../components/AppContext";
+import SectionHeaders from "../../components/layout/SectionHeaders";
 import UserTabs from "../../components/layout/UserTabs";
 import {useProfile} from "../../components/useProfile";
 import {dbTimeForHuman} from "../../libs/datetime";
