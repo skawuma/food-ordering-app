@@ -6,7 +6,7 @@ export async function POST(req) {
     mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI)
     .then(connection => {
     console.log('Connected to MongoDB')
-    })
+    });
     const data = await req.json();
     if (await isAdmin()) {
       const menuItemDoc = await MenuItem.create(data);
