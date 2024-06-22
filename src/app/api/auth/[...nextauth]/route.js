@@ -8,7 +8,8 @@ import * as mongoose from "mongoose";
 import GoogleProvider from "next-auth/providers/google";
 import {MongoDBAdapter} from "@next-auth/mongodb-adapter"
  import { env } from "process";
- require('dotenv').config(env.NEXT_PUBLIC_PATH)
+ 
+require('dotenv').config(env.NEXT_PUBLIC_PATH)
 //require('dotenv').config({path: '/Users/samuelkawuma/Library/Mobile Documents/com~apple~CloudDocs/food-ordering-app/src/.env' })
 export const authOptions ={
 
