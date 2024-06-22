@@ -15,10 +15,10 @@ export default function Home() {
         />
         <div className="text-gray-500 max-w-md mx-auto mt-4 flex flex-col gap-4">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni minima odit recusandae. Illum ipsa non repudiandae? Eum ipsam iste quos suscipit tempora? Aperiam esse fugiat inventore laboriosam officiis quam rem!
-          </p>
-          <p>At consectetur delectus ducimus est facere iure molestias obcaecati quaerat vitae voluptate? Aspernatur dolor explicabo iste minus molestiae pariatur provident quibusdam saepe?</p>
-          <p>Laborum molestias neque nulla obcaecati odio quia quod reprehenderit sit vitae voluptates? Eos, tenetur.</p>
+          For generations, our doors would not have stayed open if it were not for your love and support. From the multi-tiered cake to the one cookie we bake, we put in an equal amount of energy and joy. It brings us pleasure that we can share our passion through our crafts and sweets.
+           </p>
+          <p>We as a community have faced a lot of up and downs, and we know those downs can be really hard, but know that we take every situation you bring to us seriously and thrive to only put out products of quality and tradition.</p>
+          <p>For many years and the future to come, we will continue to share our love and invite all who would like to join us for drinks and sweets.We look forward to seeing you!Modern Pastry Family</p>
         </div>
       </section>
       <section className="text-center my-8" id="contact">

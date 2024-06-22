@@ -1,4 +1,4 @@
-import clientPromise from "@/libs/mongoConnect";
+import clientPromise from "../../../../libs/mongoConnect";
 import CredentialsProvider from "next-auth/providers/credentials";
  import { UserInfo } from "@/app/models/UserInfo";
 import NextAuth, {getServerSession}from "next-auth";
@@ -23,7 +23,7 @@ export const authOptions ={
             name: 'Credentials',
             id: 'credentials',
             credentials: {
-              username: { label: "Email", type: "email" },
+              username: { label: "Email", type: "email", placeholder: "test@example.com" },
               password: { label: "Password", type: "password" },
           },
           async authorize(credentials, req) {
