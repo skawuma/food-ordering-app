@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-src/libs/mongoConnect.js
+# src/libs/mongoConnect.js
 
 # testing
 /coverage
